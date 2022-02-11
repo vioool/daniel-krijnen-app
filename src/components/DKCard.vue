@@ -5,8 +5,9 @@
         <ul>
             <li class="list" v-for="project in entries">
                 <div class="card">
-                    <h2 class="names">{{ project }}</h2>
-                    <p class="cities">{{ project.title }}</p>
+                  <img src="../assets/images/DK-Oostenburg.jpg" alt="">
+                  <h2 class="names">{{ project.title }}</h2>
+                  <p class="cities">{{ project.title }}</p>
                 </div>
             </li>
         </ul>
@@ -14,6 +15,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     props: {
         project: {
@@ -22,23 +25,59 @@ export default {
           default: null
         }
     },
-    data() {
-        return {};
+  data() {
+    return {
+      entries: []
+    };
+  },
+  mounted() {
+    this.fetchData();
+    console.log('test tekstje');
+  },
+  methods: {
+    fetchData() {
+      axios({
+        url: "https://viola-craft.test/graphql",
+        method: "post",
+        data: {
+          query: `
+            query getProject {
+              entries(section: "projecten") {
+                title
+                url
+              }
+            }
+          `
+        }
+      }).then((result) => {
+        console.log(result);
+        this.entries = result.data.data.entries;
+      })
     }
+  }
 };
 </script>
 
 <style>
+.dk-projecten ul{
+  display: flex;
+  gap: 2rem;
+}
+
 .dk-projecten .list {
-    list-style-type: none;
+  list-style-type: none;
+
 }
 
 .dk-projecten .card {
-    /* margin: 50px; */
-    border-radius: 10px;
-    border-style: solid;
-    border-width: 2px;
-    color: white;
-    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+  /* margin: 50px; */
+  border: solid var(--color-grey-light) .0125rem;
+  width: 15.5rem;
+  height: 15.5rem;
 }
+
+img {
+  width: 15.5rem;
+}
+
 </style>

@@ -2,10 +2,10 @@
   <div>
     <DKLayout></DKLayout>
     hoi
-    <DKProjecten v-for="project in entries">
+    <DKCard v-for="project in entries">
       {{ project.title }}
       {{ project.url }}
-    </DKProjecten>
+    </DKCard>
     <pre> {{ entries }}</pre>
   </div>
 </template>
@@ -13,12 +13,12 @@
 <script>
 import axios from "axios";
 import DKLayout from "./components/DKLayout";
-import DKProjecten from "./components/DKProjecten";
+import DKCard from "./components/DKCard";
 
 export default {
   components: {
     DKLayout,
-    DKProjecten
+    DKCard
   },
   data() {
     return {
@@ -53,3 +53,26 @@ export default {
 };
 </script>
 
+<style>
+* {
+  box-style:border-box;
+}
+
+:root {
+  --color-lightest: #fcfcfc;
+  --color-grey-light: #999;
+  --color-grey: #6e6e6e;
+  --color-darkest: #111;
+  --color-primary: #e30613;
+
+  --gradient: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+
+  --font-size: 16px;
+}
+
+body {
+  background-color: var(--color-lightest);
+  color: var(--color-grey);
+}
+
+</style>

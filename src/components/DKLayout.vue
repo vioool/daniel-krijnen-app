@@ -11,14 +11,12 @@
 import DKMenu from "./DKMenu";
 import DKMain from "./DKMain";
 import DKFooter from "./DKFooter";
-import DKProjecten from "./DKProjecten";
 
 export default {
   components: {
     DKMenu,
     DKMain,
-    DKFooter,
-    DKProjecten
+    DKFooter
   },
   props: {},
   data() {

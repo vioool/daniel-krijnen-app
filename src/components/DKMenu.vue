@@ -50,7 +50,7 @@ export default {
 <style>
 .main-menu {
     width: 100vw;
-    background-color: var(--color-lightest);
+    color: var(--color-grey-light);
 }
 
 .main-menu a:hover {
@@ -58,7 +58,7 @@ export default {
 }
 
 .main-menu a.active {
-    color: var(--color-secondary);
+    color: var(--color-primary);
 }
 
 .main-menu__list {
@@ -90,7 +90,7 @@ export default {
 
 .main-menu a,
 button {
-    color: var(--color-primary-light);
+    color: var(--color-grey-light);
     font-size: 13px;
     line-height: 1.6em;
     text-transform: uppercase;
