@@ -1,82 +1,43 @@
 <template>
-    <div class="dk-projecten">
-        testen maarrrrrrrrrrrrrrrrrrr!!!!!!!!!!!!!!!!!!
-      <slot />
-        <ul>
-            <li class="list" v-for="project in entries">
-                <div class="card">
-                  <img src="../assets/images/DK-Oostenburg.jpg" alt="">
-                  <h2 class="names">{{ project.title }}</h2>
-                  <p class="cities">{{ project.title }}</p>
-                </div>
-            </li>
-        </ul>
+    <div :to="to" class="dk-card">
+      <!--    TODO: dk-card div vervangen voor route-link Tutorial: https://vueschool.io/lessons/adding-routes-and-content-->
+      <pre> {{ entries }}</pre>
+        <img class="dk-card__image" src="../assets/images/DK-Oostenburg.jpg" alt="">
+        <div class="dk-card__body">
+            <h2>{{ title }}</h2>
+        </div>
     </div>
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
-    props: {
-        project: {
-          type: Object,
-          required: false,
-          default: null
-        }
+  props: {
+    title: {
+      type: String,
+      default: null
     },
-  data() {
-    return {
-      entries: []
-    };
-  },
-  mounted() {
-    this.fetchData();
-    console.log('test tekstje');
-  },
-  methods: {
-    fetchData() {
-      axios({
-        url: "https://viola-craft.test/graphql",
-        method: "post",
-        data: {
-          query: `
-            query getProject {
-              entries(section: "projecten") {
-                title
-                url
-              }
-            }
-          `
-        }
-      }).then((result) => {
-        console.log(result);
-        this.entries = result.data.data.entries;
-      })
+    to: {
+      type: [Object, String],
+      default: null
     }
   }
 };
 </script>
 
 <style>
-.dk-projecten ul{
-  display: flex;
-  gap: 2rem;
-}
+.dk-card {
 
-.dk-projecten .list {
-  list-style-type: none;
-
-}
-
-.dk-projecten .card {
-  /* margin: 50px; */
-  border: solid var(--color-grey-light) .0125rem;
   width: 15.5rem;
   height: 15.5rem;
+
+  border: solid var(--color-grey-light) .0125rem;
 }
 
-img {
+.dk-card:hover {
+  opacity: 0.5;
+}
+
+.dk-card__image {
   width: 15.5rem;
 }
 

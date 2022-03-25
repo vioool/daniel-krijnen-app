@@ -2,8 +2,11 @@
   <div class="dk-layout">
     <DKMenu/>
     <DKMain>
+      <h1>Main vervanger</h1>deze text vervangt de content van de main component
     </DKMain>
-    <DKFooter/>
+    <DKFooter>
+      de header hierboven komt uit de footer component maar dezxe text is een vervanger
+    </DKFooter>
   </div>
 </template>
 
