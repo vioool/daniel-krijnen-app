@@ -16,3 +16,20 @@ export default {
     }
 };
 </script>
+<style>
+.dk-main {
+  padding: var(--grid-gap-mobile);
+}
+
+@media (min-width: 320px) {
+  .dk-main {
+    padding: var(--grid-gap-tablet);
+  }
+}
+
+@media (min-width: 992px) {
+  .dk-main {
+    padding: var(--grid-gap-desktop);
+  }
+}
+</style>
