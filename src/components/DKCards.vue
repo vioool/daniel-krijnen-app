@@ -64,11 +64,25 @@ export default {
 .dk-cards__list {
   padding: 0;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
 }
 
 .dk-cards__list-item {
+  /*flex: 100%;*/
   list-style-type: none;
 }
+
+/*@media (min-width: 320px) {*/
+/*  .dk-cards__list-item {*/
+/*    flex: 50%;*/
+/*  }*/
+/*}*/
+
+/*@media (min-width: 992px) {*/
+/*  .dk-cards__list-item {*/
+/*    flex: 33%;  }*/
+/*}*/
 
 </style>
