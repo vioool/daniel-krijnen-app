@@ -1,7 +1,6 @@
 <template>
     <div :to="to" class="dk-card">
       <!--    TODO: dk-card div vervangen voor route-link Tutorial: https://vueschool.io/lessons/adding-routes-and-content-->
-      <pre> {{ entries }}</pre>
         <img class="dk-card__image" src="../assets/images/DK-Oostenburg.jpg" alt="">
         <div class="dk-card__body">
             <h2>{{ title }}</h2>
@@ -26,11 +25,15 @@ export default {
 
 <style>
 .dk-card {
-
   width: 15.5rem;
   height: 15.5rem;
 
   border: solid var(--color-grey-light) .0125rem;
+}
+
+.dk-card h2{
+  margin: 0;
+  padding: 1rem;
 }
 
 .dk-card:hover {
