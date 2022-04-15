@@ -1,24 +1,19 @@
 <template>
   <div>
-    <DKLayout></DKLayout>
+    <DKDefault></DKDefault>
     hoi! deze texts staat gewoon op de app
     <!--    TODO: paginas maken en routes - beginnen in DKMenu.vue Tutorial: https://vueschool.io/lessons/adding-routes-and-content-->
-    <DKCards>
-      Dit vervangt de Fallback content van de DKCardssss
-    </DKCards>
     <pre> {{ entries }}</pre>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import DKLayout from "./components/DKLayout";
-import DKCards from "./components/DKCards";
+import DKDefault from "./components/DKLayouts/DKDefault";
 
 export default {
   components: {
-    DKLayout,
-    DKCards
+    DKDefault
   },
   data() {
     return {
@@ -59,9 +54,9 @@ export default {
 }
 
 :root {
-  --grid-gap-mobile: 1.25rem;
-  --grid-gap-tablet: 2rem;
-  --grid-gap-desktop: 9rem;
+  --grid-gap-mobile: .75rem;
+  --grid-gap-tablet: 1rem;
+  --grid-gap-desktop: 4rem;
 
   --color-lightest: #fcfcfc;
   --color-grey-light: #999;
@@ -72,59 +67,27 @@ export default {
   --gradient: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
 
   --font-size: 16px;
+
+  /* No 'min-max' queries for xxs as it's the default */
+  /* use as follow: @media screen and (min-width: var(--q-xs-min)) */
+
+  /** Minimum widths for breakpoints */
+  --q-xs-min: 320px + 1; /* Modern phones portrait */
+  --q-sm-min: 576px + 1; /* Modern phones landscape */
+  --q-md-min: 768px + 1; /* Tablet / medium devices */
+  --q-lg-min: 992px + 1; /* Desktop */
+  --q-xl-min: 1260px + 1; /* High res - large desktop */
+  --q-xxl-min: 1700px + 1; /* Mega large desktop */
+
+  --q-xs-max: 320px; /* Modern phones portrait */
+  --q-sm-max: 576px; /* Modern phones landscape */
+  --q-md-max: 768px; /* Tablet / medium devices */
+  --q-lg-max: 992px; /* Desktop */
+  --q-xl-max: 1260px; /* High res - large desktop */
+  --q-xxl-max: 1700px; /* Mega large desktop */
 }
-/**
- * Minimum widths for breakpoints
- */
-  @screen-xs: 320px; /* Modern phones portrait */
-  @screen-sm: 576px; /* Modern phones landscape */
-  @screen-md: 768px; /* Tablet / medium devices */
-  @screen-lg: 992px; /* Desktop */
-  @screen-xl: 1260px; /* High res - large desktop */
-  @screen-xxl: 1700px; /* Mega large desktop */
-
-
-  /**
-   * Media Queries
-   */
-  @screen-xs-min: (@screen-xs + 1);
-  @screen-sm-min: (@screen-sm + 1);
-  @screen-md-min: (@screen-md + 1);
-  @screen-lg-min: (@screen-lg + 1);
-  @screen-xl-min: (@screen-xl + 1);
-  @screen-xxl-min: (@screen-xxl + 1);
-
-/* No minmax queries for xxs as it's the default */
-  @q-xxs:    ~'screen and (max-width: 320px)';
-
-  @q-xs-min: ~'screen and (min-width: 320px + 1)';
-  @q-xs-max: ~'screen and (max-width: 320px~)';
-  @q-xs:     ~'screen and (min-width:' @screen-xs-min~') and (max-width:'@screen-sm~')';
-
-  @q-sm-min: ~'screen and (min-width:' @screen-sm-min~')';
-  @q-sm-max: ~'screen and (max-width:' @screen-sm~')';
-  @q-sm:     ~'screen and (min-width:' @screen-sm-min~') and (max-width:'@screen-md~')';
-
-  @q-md-min: ~'screen and (min-width:' @screen-md-min~')';
-  @q-md-max: ~'screen and (max-width:' @screen-md~')';
-  @q-md:     ~'screen and (min-width:' @screen-md-min~') and (max-width:'@screen-lg~')';
-
-  @q-lg-min: ~'screen and (min-width:' @screen-lg-min~')';
-  @q-lg-max: ~'screen and (max-width:' @screen-lg~')';
-  @q-lg:     ~'screen and (min-width:' @screen-lg-min~') and (max-width:'@screen-xl~')';
-
-  @q-xl-min: ~'screen and (min-width:' @screen-xl-min~')';
-  @q-xl-max: ~'screen and (max-width:' @screen-xl')';
-  @q-xl:     ~'screen and (min-width:' @screen-xl-min~') and (max-width:'@screen-xxl~')';
-
-  @q-xxl-min: ~'screen and (min-width:' @screen-xxl-min~')';
-  @q-xxl-max: ~'screen and (max-width:' @screen-xxl')';
-  @q-xxl: @q-xxl-min;
-
 
 body {
-  /*padding: var(--grid-gap-mobile);*/
-  padding: var(--grid-gap-desktop);
   background-color: var(--color-lightest);
   color: var(--color-grey);
 }

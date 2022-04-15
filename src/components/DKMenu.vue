@@ -1,6 +1,16 @@
 <template>
     <nav class="main-menu">
         <ul class="main-menu__list">
+          <router-link to="/">
+            <img
+              src="./DK-logo.png"
+              alt=""
+              class="main-menu__list-logo"
+            />
+          </router-link>
+          <router-link to="/projecten">Projecten</router-link>
+          <router-link to="/expertise">Expertise</router-link>
+          <router-link to="/over">Over mij</router-link>
             <li>
                 <a href="#"
                     ><img
@@ -13,33 +23,36 @@
             <li><a href="#">expertise</a></li>
             <li><a href="#">over mij</a></li>
             <li>
-                <button v-on:click="contact">contact</button>
+                <DKButton>Contact</DKButton>
             </li>
-            <li>
-                <a
-                    class="main-menu__list-icon-bars"
-                    href=""
-                    v-on:click="MenuOpen"
-                >
-                    <i class="fa fa-bars"></i>
-                </a>
-            </li>
-            <li>
-                <a
-                    class="main-menu__list-icon-cross"
-                    href=""
-                    v-on:click="MenuOpen"
-                >
-                    <i class="fa fa-times"></i>
-                </a>
-            </li>
+            <!--            <li>-->
+            <!--                <a-->
+            <!--                    class=" main-menu__list-icon main-menu__list-icon-bars"-->
+            <!--                    href=""-->
+            <!--                    v-on:click="MenuOpen"-->
+            <!--                >-->
+            <!--                    <i class="fa fa-bars"></i>-->
+            <!--                </a>-->
+            <!--            </li>-->
+            <!--            <li>-->
+            <!--                <a-->
+            <!--                    class="main-menu__list-icon main-menu__list-icon-cross"-->
+            <!--                    href=""-->
+            <!--                    v-on:click="MenuOpen"-->
+            <!--                >-->
+            <!--                    <i class="fa fa-times"></i>-->
+            <!--                </a>-->
+            <!--            </li>-->
         </ul>
     </nav>
 </template>
 
 <script>
+
+import DKButton from "./DKButton.vue";
+
 export default {
-    components: {},
+    components: { DKButton },
     props: {},
     data() {
         return {};
@@ -49,34 +62,65 @@ export default {
 
 <style>
 .main-menu {
-    width: 100vw;
+    padding: var(--grid-gap-mobile);
     color: var(--color-grey-light);
+}
+
+@media (min-width: 320px) {
+  .main-menu {
+    padding: var(--grid-gap-tablet);
+  }
+}
+
+@media (min-width: 992px) {
+  .main-menu {
+    padding: var(--grid-gap-desktop);
+  }
+}
+
+.main-menu a {
+  display: block;
 }
 
 .main-menu a:hover {
     color: var(--color-darkest);
 }
 
-.main-menu a.active {
+.main-menu a:active {
     color: var(--color-primary);
 }
 
 .main-menu__list {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
-    padding: 1rem;
-    margin: 0;
-    list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  margin: 0;
+  list-style: none;
+}
+
+.main-menu__list:first-child {
+  padding-left: 0px;
+}
+
+@media (min-width: 992px) {
+  .main-menu__list {
+    flex-direction: row;
+  }
 }
 
 .main-menu__list-logo {
-    max-width: 16rem;
+  max-width: 16rem;
 }
 
 .main-menu__list-icon {
+    display: block;
+}
+
+@media (min-width: 992px) {
+  .main-menu__list-icon {
     display: none;
+  }
 }
 
 .main-menu li {
@@ -85,7 +129,6 @@ export default {
 
 .main-menu li:first-child {
     margin-right: auto;
-    margin-left: 1.25rem;
 }
 
 .main-menu a,

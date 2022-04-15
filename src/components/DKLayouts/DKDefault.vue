@@ -1,8 +1,12 @@
 <template>
-  <div class="dk-layout">
+  <div class="dk-default">
     <DKMenu/>
+    <Nuxt />
     <DKMain>
       <h1>Main vervanger</h1>deze text vervangt de content van de main component
+      <DKCards>
+        Dit vervangt de Fallback content van de DKCardssss
+      </DKCards>
     </DKMain>
     <DKFooter>
       de header hierboven komt uit de footer component maar dezxe text is een vervanger
@@ -11,15 +15,17 @@
 </template>
 
 <script>
-import DKMenu from "./DKMenu";
-import DKMain from "./DKMain";
-import DKFooter from "./DKFooter";
+import DKMenu from "../DKMenu";
+import DKMain from "../DKMain";
+import DKFooter from "../DKFooter";
+import DKCards from "../DKCards";
 
 export default {
   components: {
     DKMenu,
     DKMain,
-    DKFooter
+    DKFooter,
+    DKCards
   },
   props: {},
   data() {
@@ -28,7 +34,7 @@ export default {
 };
 </script>
 <style>
-.dk-layout {
+.dk-default {
   /*display: grid;*/
   /*grid-template-areas: 'header' 'main' 'footer';*/
   /*grid-template-rows: auto 1fr auto;*/
